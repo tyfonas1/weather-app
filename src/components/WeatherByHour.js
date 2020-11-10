@@ -4,7 +4,6 @@ import {Text} from 'react-native-paper';
 import {device} from '../constants';
 
 const WeatherByHour = ({data}) => {
-  console.log('data', data[0].dt_txt);
   return (
     <ScrollView
       horizontal={true}
@@ -17,7 +16,9 @@ const WeatherByHour = ({data}) => {
       {data.length > 0 &&
         data?.map((item) => {
           return (
-            <View style={{alignItems: 'center', marginHorizontal: 10}}>
+            <View
+              key={item.dt}
+              style={{alignItems: 'center', marginHorizontal: 10}}>
               <Image
                 style={{height: 20, width: 33}}
                 source={require('../../assets/images/cloud.png')}

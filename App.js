@@ -1,6 +1,7 @@
 import React from 'react';
-import {View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import HomeWeather from './src/screens/Home';
+import AppStatusBar from './src/components/AppStatusBar';
 import {fonts, colors} from './src/constants';
 import {
   configureFonts,
@@ -32,7 +33,7 @@ const fontConfig = {
     },
   },
 };
-
+const THEME_COLOR = '#5b559d';
 fontConfig.ios = fontConfig.default;
 fontConfig.android = fontConfig.default;
 
@@ -44,7 +45,11 @@ const App = () => {
 
         // fonts: configureFonts(fontConfig),
       }}>
-      <HomeWeather />
+      <SafeAreaView style={{flex: 0, backgroundColor: THEME_COLOR}} />
+      <SafeAreaView style={{flex: 1, backgroundColor: THEME_COLOR}}>
+        <AppStatusBar backgroundColor={THEME_COLOR} barStyle="light-content" />
+        <HomeWeather />
+      </SafeAreaView>
     </PaperProvider>
   );
 };
